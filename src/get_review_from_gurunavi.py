@@ -74,7 +74,7 @@ class review_collecter_from_gurunavi(info_collecter_from_gurunavi):
         return temp_dict
 
 
-    def write_to_csv(self, file_name='rest.csv'):
+    def write_to_csv(self, file_name='review.csv'):
         self.review_df.to_csv(str(file_name), encoding="cp932")
 
 
