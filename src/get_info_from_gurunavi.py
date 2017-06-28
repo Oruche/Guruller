@@ -98,11 +98,4 @@ class info_collecter_from_gurunavi:
 
     def write_to_csv(self, file_name='rest.csv'):
         self.rest_df.to_csv(str(file_name), encoding="cp932")
-
-
-
-#
-# test = review_collecter_from_gurunavi()
-# test.create_request_url('shop_id=g581402,g581405,a491700,a919400')
-# test.send_request()
-# test.write_to_csv('review.csv')
+        
