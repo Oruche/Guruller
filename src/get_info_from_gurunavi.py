@@ -13,7 +13,7 @@ class info_collecter_from_gurunavi:
         self.keyid = os.environ['GURUNAVI_API_KEY']
         self.request_url = 'https://api.gnavi.co.jp/RestSearchAPI/20150630/'
         self.offset = 0
-        self.query = [('format', format)]
+        self.query = [('format', format),('hit_per_page', 10)]
         self.rest_df = pd.DataFrame()
 
 
@@ -100,3 +100,9 @@ class info_collecter_from_gurunavi:
         self.rest_df.to_csv(str(file_name), encoding="cp932")
 
 
+
+#
+# test = review_collecter_from_gurunavi()
+# test.create_request_url('shop_id=g581402,g581405,a491700,a919400')
+# test.send_request()
+# test.write_to_csv('review.csv')
