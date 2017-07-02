@@ -45,7 +45,6 @@ class review_collecter_from_gurunavi(info_collecter_from_gurunavi):
             return
         try:
             self.data = result['response']
-            self.print_json(self.data)
         except:
             if 'error' in result['gnavi']:
                 print(result['gnavi']['error'])
@@ -70,7 +69,6 @@ class review_collecter_from_gurunavi(info_collecter_from_gurunavi):
             print('APIアクセスに失敗しました')
             return
         self.data = json.loads(result.decode('utf-8'))['response']
-        self.print_json(self.data)
         if self.check_result():
             self.create_review_dataframe_offset()
 
@@ -110,7 +108,7 @@ class review_collecter_from_gurunavi(info_collecter_from_gurunavi):
 
 
     def write_to_csv(self, file_name='review.csv'):
-        self.review_df.to_csv(str(file_name), encoding="cp932")
+        self.review_df.to_csv(str(file_name), encoding="utf-8")
 
 
     def print_json(self, json_data):
@@ -122,10 +120,3 @@ class review_collecter_from_gurunavi(info_collecter_from_gurunavi):
 
 
 
-#rc = review_collecter_from_gurunavi()
-#rc.create_request_url('latitude=35.659272', 'longitude=139.697958','range=1')
-#rc.create_request_url('shop_id=g581402,g581405,a491700,a919400')
-#rc.create_request_url('latitude=35.607353', 'longitude=139.685616', 'range=1')
-#rc.send_request()
-#rc.write_to_csv('shop_review.csv')
-#print(rc.review_df.loc[:,'comment'])
